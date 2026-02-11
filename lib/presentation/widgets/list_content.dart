@@ -33,7 +33,6 @@ class ListContent extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // BAGIAN KIRI (Nama + Status)
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,23 +60,50 @@ class ListContent extends StatelessWidget {
               ),
             ),
 
-            // BAGIAN KANAN (Icon)
+       
             Row(
               children: [
-                IconButton(
-                  onPressed: onDone,
-                  icon: const Icon(Icons.check),
-                  color: Colors.green,
+                
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: onDone,
+                      icon: const Icon(Icons.check, color: Colors.green),
+                    ),
+                    const Text(
+                      'Status',
+                      style: TextStyle(color: Colors.green, fontSize: 12),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: onEdit,
-                  icon: const Icon(Icons.edit),
-                  color: Colors.blue,
-                ),
-                IconButton(
-                  onPressed: onDelete,
-                  icon: const Icon(Icons.delete),
-                  color: Colors.red,
+
+                
+                if (!taskCompleted)
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: onEdit,
+                        icon: const Icon(Icons.edit, color: Colors.blue),
+                      ),
+                      const Text(
+                        'Edit',
+                        style: TextStyle(color: Colors.blue, fontSize: 12),
+                      ),
+                    ],
+                  ),
+
+                
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: onDelete,
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                    ),
+                    const Text(
+                      'Hapus',
+                      style: TextStyle(color: Colors.red, fontSize: 12),
+                    ),
+                  ],
                 ),
               ],
             ),
